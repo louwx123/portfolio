@@ -19,7 +19,7 @@ ul,ol{
     top:0;
     left: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 10;
     background-color: #eb9e34;
 }
 
@@ -33,11 +33,11 @@ ul,ol{
 .top{
     display: grid;
     grid-template-columns: 1fr 8fr 4fr;
-margin: 0.5em;
+    margin: 0.5em;
 
 }
 main{
-    margin-top: 10em;
+    margin-top: 12em;
 }
 
 .search{
@@ -75,11 +75,13 @@ hr{
 .filterbar{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 0 2em;
 }
 
 .sortoption{
     display: flex;
     text-align: left;
+    margin: 0.3em;
 }
 
 .optionbtn {
@@ -99,126 +101,78 @@ hr{
 
 .products {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-bottom: 1rem;
-    padding: 2rem;
-    grid-row-gap: 0.6rem;
-    grid-column-gap: 0.6rem;
-    align-self: start;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 2em;
+    grid-gap: 1em;
 }
 
-.productsCard {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    height: auto;
-    margin: auto;
-    text-align: center;
-    padding: 0.5rem;
-    border: 1px solid rgba(0, 0, 0, .87);
-    position: relative;
-   
-}
-.productsCard{
-    display: block;
-}
-.productsCard:hover + .onhoverShow{
-    display: block;
-    color:red;
-    font-size:30px;
-}
-
-img:hover + .onhoverShow{
-  display: block;
-}
-
-.onhoverShow{
-    display: none;
-}
-
-
-.ProductCardName {
-    color: rgba(0, 0, 0, .87);
-    font-family: 'Bebas Neue', cursive;
-    font-size: 25px;
-    margin-top: 1rem;
-    padding: 0.2rem 1rem;
-}
-
-.productCardList {
-    color: rgba(0, 0, 0, .87);
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    margin-bottom: 1rem;
-    padding: 1rem;
-
-}
-
-.price {
-    color: red;
-    font-size: 22px;
-}
-
-.productsCard .productCardButton {
-    border: none;
-    outline: 0;
-    padding: 0.4rem;
-    color: rgb(250, 249, 249);
-    background-color: rgba(0, 0, 0, .87);
-    text-align: center;
-    cursor: pointer;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 16px;
-}
-
-.container {
+.item {
     position: relative;
     text-align: center;
+    border: 1px solid grey;
+    box-shadow: 5px 7px lightgrey;
+}
+
+.itemname{
+    font-size: 1.2em;
+}
+
+.cartbtn{
+    margin-top:1em;
+    border: 1px dashed white;
+    background-color: Black;
     color: white;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    width: 100%;
 }
 
-.heartBtn {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 25px;
-    opacity: 0.7;
-    color: rgb(63, 46, 46);
+#result{
+    width: 100%;
 }
 
-.onsale_banner{
+.onsale{
+    color: white;
+    background-color: red;
     position: absolute;
     top: -1em;
     left:0em;
     text-align: center;
-    font-size: 16px;
-    color:white;
-    background: red;
-    padding: 0.12em;
+    font-size: 1em;
     margin-top:1em;
-    z-index:1;
+    z-index:2;
+    width: 100%;
+    padding: 0.3em 0;
 }
 
+.soldout{
+    color: white;
+    background-color: grey;
+    position: absolute;
+    top: -1em;
+    left:0em;
+    text-align: center;
+    font-size: 1em;
+    margin-top:1em;
+    z-index:2;
+    width: 100%;
+    padding: 0.3em 0;
 
 
-/* For Mobiles */ 
-@media screen and (max-width:500px) {
-    
-  
-  }
-  
-  
-  /* For Tablets */
-  
-  @media screen and (max-width:927px) and (min-width:501px){
+}
+
+@media screen and (max-width:768){
       
      
-  }
+}
+
+@media screen and (max-width:425) {
+    
   
-  /* For Desktop */
-  @media screen and (max-width:1128px) and (min-width:928px){
-      
-      
-  }
+}
   
+  
+  
+
+  
+
