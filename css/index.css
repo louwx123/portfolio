@@ -87,7 +87,7 @@ hr{
 .sortoption{
     display: flex;
     text-align: left;
-    margin: 0.3em;
+    margin: 0.2em;
 }
 
 .optionbtn {
@@ -96,7 +96,7 @@ hr{
     line-height: 2em;
     border-radius: 15px;
     padding: 0 1em;
-    margin: 0.5em 1em;
+    margin: 0.5em 0.5em;
 
 }
 
@@ -206,7 +206,7 @@ hr{
 }
 .footimage{
     position: absolute;
-    top: 0;
+    bottom: 0;
 
 }
 .ad{
@@ -236,6 +236,47 @@ hr{
     .topbar{
         font-size: 0.7em;
     }
+    .optionbtn{
+        font-size: 0.7em;
+    }
+    main{
+        margin-top:10em;
+    }
+    .filterbox{
+        font-size:0.7em;
+        margin: 1.5em;
+    }
+    .ad{
+        font-size: 1em;
+        left: 8em;
+        top:2em;
+    }
+    .app{
+        height:1.5em;
+        width: 5em;;
+        top:2em;
+
+    }
+    .footimage{
+        height:100%;
+    }
+    .bottom1{
+        height: 3em;
+    }
+    
+    .bottom2{
+        height: 6em;
+    }
+    .switch{
+        right: 1em;
+        top: 5.3em;
+    }
+    
+    .switchbtn{
+        margin: 0.2em;
+        padding: 0.2em;
+        font-size: 0.7em
+    }
       
      
 }
@@ -250,7 +291,33 @@ hr{
     .topbar{
         font-size: 0.5em;
     }
-  
+    .sortoption{
+        display: none;
+    }
+    main{
+        margin-top:6em;
+    }
+    .filterbox{
+        font-size:0.5em;
+        margin: 1em;
+    }
+
+    .switch{
+        right: 0.5em;
+        top: 4.5em;
+    }
+    
+    .ad{
+        font-size: 1em;
+        left: 7em;
+        top:1em;
+    }
+    .app{
+        height:1.5em;
+        width: 5em;;
+        top:4em;
+
+    }
 }
   
   

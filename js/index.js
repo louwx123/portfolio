@@ -254,7 +254,7 @@ document.getElementById(`allitems`).innerHTML = alldata
   .join("\n");
 
   //search 
-function LoadProducts(n){
+function loadProducts(n){
   const search=document.getElementById('find').value.toLowerCase();
   const searchResultsArray=alldata.filter(item=> item.name.toLowerCase().includes(search));
   renderProducts(searchResultsArray);
@@ -305,7 +305,7 @@ function hideSorts(){
 }
 
 //filte
-function LoadProductsByFilters(){
+function loadProductsByFilters(){
 
   let arrayByCategory=[];
   let arrayByBrand=[];
@@ -360,26 +360,26 @@ function LoadProductsByFilters(){
 
 //sort
 
-function LoadProductsPriceLowToHigh() {
+function loadProductsPriceLowToHigh() {
   const priceLowToHighArray = alldata.slice().sort((a, b) => a.price - b.price);
   renderProducts(priceLowToHighArray);
 }
 
-function LoadProductsPriceHighTolow() {
+function loadProductsPriceHighTolow() {
   const priceHighToLowArray = alldata.slice().sort((a, b) => b.price - a.price);
   renderProducts(priceHighToLowArray);
 }
 
-function LoadProductsBrandAZ() {
+function loadProductsBrandAZ() {
   const brandaz = alldata.slice().sort((a, b) => a.brand.localeCompare(b.brand));
   renderProducts(brandaz);
 }
-function LoadProductsBrandZA() {
+function loadProductsBrandZA() {
   const brandza = alldata.slice().sort((a, b) => b.brand.localeCompare(a.brand));
   renderProducts(brandza);
 }
 
-function LoadProductsByAvailability() {
+function loadProductsByAvailability() {
   const availabilityArray = alldata.slice().sort((a, b) => (a.stock < b.stock ? 1 : -1));
   renderProducts(availabilityArray);
 }
@@ -401,21 +401,21 @@ function renderProducts(arr) {
 
 //execution
 window.addEventListener('load', () => {
-document.getElementById(`find`).addEventListener("change",LoadProducts);
-document.getElementById(`pricehightolow`).addEventListener("click", LoadProductsPriceHighTolow);
-document.getElementById(`pricelowtohigh`).addEventListener("click", LoadProductsPriceLowToHigh);
-document.getElementById(`brandaz`).addEventListener("click", LoadProductsBrandAZ);
-document.getElementById(`brandza`).addEventListener("click", LoadProductsBrandZA);
-document.getElementById(`availability`).addEventListener("click", LoadProductsByAvailability);
+document.getElementById(`find`).addEventListener("change",loadProducts);
+document.getElementById(`pricehightolow`).addEventListener("click", loadProductsPriceHighTolow);
+document.getElementById(`pricelowtohigh`).addEventListener("click", loadProductsPriceLowToHigh);
+document.getElementById(`brandaz`).addEventListener("click", loadProductsBrandAZ);
+document.getElementById(`brandza`).addEventListener("click", loadProductsBrandZA);
+document.getElementById(`availability`).addEventListener("click", loadProductsByAvailability);
 document.getElementById(`filter`).addEventListener("click", hideFilter);
 document.getElementById(`sort`).addEventListener("click", hideSorts);
-document.querySelectorAll('[name="category"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
-document.querySelectorAll('[name="brand"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
-document.querySelectorAll('[name="color"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
-document.querySelectorAll('[name="light"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
-document.querySelectorAll('[name="price"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
+document.querySelectorAll('[name="category"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
+document.querySelectorAll('[name="brand"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
+document.querySelectorAll('[name="color"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
+document.querySelectorAll('[name="light"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
+document.querySelectorAll('[name="price"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
 document.
 
-getItemAsHtml(alldata);
+renderProducts(alldata);
 
 });
