@@ -262,18 +262,18 @@ function LoadProducts(n){
 
 //addto cart function
 
-// const addItemToCart = itemid => {
+const addItemToCart = itemid => {
 
-//   const cartItem = shoppingCart.find(item => item.itemid == itemid);
+  const cartItem = shoppingCart.find(item => item.itemid == itemid);
 
-//   if (cartItem) {  
-//     cartItem.qty++;
-//     alert("Another item has been added to your cart");
-//   } else {
-//     shoppingCart.push({ID: pID, qty: 1});
-//     alert("A new item has been added to your cart");
-//   }
-// }
+  if (cartItem) {  
+    cartItem.qty++;
+    alert("Another item has been added to your cart");
+  } else {
+    shoppingCart.push({ID: pID, qty: 1});
+    alert("A new item has been added to your cart");
+  }
+}
 
 // const addItemToCart = courseid => {
 //   // [ {courseid: 101, qty: 1} ]
@@ -359,24 +359,28 @@ function LoadProductsByFilters(){
 }
 
 //sort
+
 function LoadProductsPriceLowToHigh() {
-  const PriceLowToHighArray = alldata
-    .slice(0)
-    .sort((a, b) => (a.price > b.price ? 1 : -1));
-  renderProducts(PriceLowToHighArray);
+  const priceLowToHighArray = alldata.slice().sort((a, b) => a.price - b.price);
+  renderProducts(priceLowToHighArray);
 }
 
 function LoadProductsPriceHighTolow() {
-  const PriceHighToLowArray = alldata
-    .slice(0)
-    .sort((a, b) => (a.price < b.price ? 1 : -1));
-  renderProducts(PriceHighToLowArray);
+  const priceHighToLowArray = alldata.slice().sort((a, b) => b.price - a.price);
+  renderProducts(priceHighToLowArray);
+}
+
+function LoadProductsBrandAZ() {
+  const brandaz = alldata.slice().sort((a, b) => a.brand.localeCompare(b.brand));
+  renderProducts(brandaz);
+}
+function LoadProductsBrandZA() {
+  const brandza = alldata.slice().sort((a, b) => b.brand.localeCompare(a.brand));
+  renderProducts(brandza);
 }
 
 function LoadProductsByAvailability() {
-  const availabilityArray = alldata
-    .slice(0)
-    .sort((a, b) => (a.stock < b.stock ? 1 : -1));
+  const availabilityArray = alldata.slice().sort((a, b) => (a.stock < b.stock ? 1 : -1));
   renderProducts(availabilityArray);
 }
 
@@ -400,6 +404,8 @@ window.addEventListener('load', () => {
 document.getElementById(`find`).addEventListener("change",LoadProducts);
 document.getElementById(`pricehightolow`).addEventListener("click", LoadProductsPriceHighTolow);
 document.getElementById(`pricelowtohigh`).addEventListener("click", LoadProductsPriceLowToHigh);
+document.getElementById(`brandaz`).addEventListener("click", LoadProductsBrandAZ);
+document.getElementById(`brandza`).addEventListener("click", LoadProductsBrandZA);
 document.getElementById(`availability`).addEventListener("click", LoadProductsByAvailability);
 document.getElementById(`filter`).addEventListener("click", hideFilter);
 document.getElementById(`sort`).addEventListener("click", hideSorts);
@@ -408,6 +414,7 @@ document.querySelectorAll('[name="brand"]').forEach(filterradio => filterradio.a
 document.querySelectorAll('[name="color"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
 document.querySelectorAll('[name="light"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
 document.querySelectorAll('[name="price"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
+document.
 
 getItemAsHtml(alldata);
 
