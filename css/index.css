@@ -34,7 +34,7 @@ ul,ol{
     display: grid;
     grid-template-columns: 1fr 8fr 4fr;
     margin: 0.5em;
-
+    
 }
 main{
     margin-top: 12em;
@@ -78,6 +78,12 @@ hr{
     margin: 0 2em;
 }
 
+.filterbox{
+    border-radius: 15px;
+    background-color: lightgrey;
+    margin: 0 2em;
+}
+
 .sortoption{
     display: flex;
     text-align: left;
@@ -99,10 +105,30 @@ hr{
     color: white;
 }
 
+.switch{
+    background-color:inherit;
+    position: fixed;
+    right: 1em;
+    top: 6.8em;
+    z-index: 20;
+}
+
+.switchbtn{
+    border: 1px solid black;
+    margin: 0.2em;
+    padding: 0.2em;
+    border-radius: 10px;
+    width:3em;
+
+
+
+}
+
 .products {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    margin: 2em;
+    margin: 0 1em;
+    padding: 1em;
     grid-gap: 1em;
 }
 
@@ -124,10 +150,6 @@ hr{
     color: white;
     padding: 1em 2em;
     font-size: 1.2em;
-    width: 100%;
-}
-
-#result{
     width: 100%;
 }
 
@@ -161,13 +183,30 @@ hr{
 
 }
 
-@media screen and (max-width:768){
+@media screen and (max-width:768px){
+    .products{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .column{
+        font-size: 1em;
+    }
+    .topbar{
+        font-size: 0.7em;
+    }
       
      
 }
 
-@media screen and (max-width:425) {
-    
+@media screen and (max-width:425px) {
+    .products{
+        grid-template-columns: 1fr 1fr;
+    }
+    .column{
+        font-size: 0.7em;
+    }
+    .topbar{
+        font-size: 0.5em;
+    }
   
 }
   

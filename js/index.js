@@ -1,6 +1,6 @@
 const alldata=[
   {//1
-    name:`Cherry MX 8.0 Black`,
+    name:`Cherry MX 8.0`,
     code:101,
     image:`img/cherry/cherry-black-1.jpg`,
     color:`black`,
@@ -12,7 +12,7 @@ const alldata=[
     stock:50,
     light:`light`
   },{//2
-    name:`Cherry G80 Black`,
+    name:`Cherry G80`,
     code:102,
     image:`img/cherry/cherry-black-2.jpg`,
     color:`black`,
@@ -24,7 +24,7 @@ const alldata=[
     stock:180,
     light:`nolight`
   },{//3
-    name:`Cherry MX 6.0 Black`,
+    name:`Cherry MX 6.0`,
     code:103,
     image:`img/cherry/cherry-black-3.jpg`,
     color:`black`,
@@ -36,7 +36,7 @@ const alldata=[
     stock:26,
     light:`light`
   },{//4
-    name:`Cherry MX 8.0 Pink`,
+    name:`Cherry MX 8.0`,
     code:104,
     image:`img/cherry/cherry-pink-4.jpg`,
     color:`pink`,
@@ -48,7 +48,7 @@ const alldata=[
     stock:6,
     light:`nolight`
   },{//5
-    name:`Cherry MX 8.0 White`,
+    name:`Cherry MX 8.0`,
     code:105,
     image:`img/cherry/cherry-white-5.jpg`,
     color:`white`,
@@ -61,7 +61,7 @@ const alldata=[
     light:`light`
 
   },{//6
-    name:`Cherry G90 White`,
+    name:`Cherry G90`,
     code:106,
     image:`img/cherry/cherry-white-6.jpg`,
     color:`white`,
@@ -295,6 +295,14 @@ function hideFilter(){
     hide.style.display = "none";
   }
 }
+function hideSorts(){
+  const a = document.getElementById("sorts");
+  if (a.style.display == "none") {
+    a.style.display = "flex";
+  } else {
+    a.style.display = "none";
+  }
+}
 
 //filte
 function LoadProductsByFilters(){
@@ -341,29 +349,28 @@ function LoadProductsByFilters(){
 
   if(document.querySelector('input[name="price"]:checked') != null){
     let price=document.querySelector('input[name="price"]:checked').value;
-    arrayByPrice=arrayByLight.filter(item=>item.price<=price);
+    arrayByPrice=arrayByLight.filter(item=>item.price>=price);
   }
   else{
     arrayByPrice=arrayByLight;
   }
 
-  renderProducts(arrayByLight);
+  renderProducts(arrayByPrice);
 }
-
 
 //sort
-function LoadProductsPriceHighTolow() {
-  const PriceHighToLowArray = alldata
-    .slice(0)
-    .sort((a, b) => (a.price < b.price ? 1 : -1));
-  renderProducts(PriceHighToLowArray);
-}
-
 function LoadProductsPriceLowToHigh() {
   const PriceLowToHighArray = alldata
     .slice(0)
     .sort((a, b) => (a.price > b.price ? 1 : -1));
   renderProducts(PriceLowToHighArray);
+}
+
+function LoadProductsPriceHighTolow() {
+  const PriceHighToLowArray = alldata
+    .slice(0)
+    .sort((a, b) => (a.price < b.price ? 1 : -1));
+  renderProducts(PriceHighToLowArray);
 }
 
 function LoadProductsByAvailability() {
@@ -395,6 +402,7 @@ document.getElementById(`pricehightolow`).addEventListener("click", LoadProducts
 document.getElementById(`pricelowtohigh`).addEventListener("click", LoadProductsPriceLowToHigh);
 document.getElementById(`availability`).addEventListener("click", LoadProductsByAvailability);
 document.getElementById(`filter`).addEventListener("click", hideFilter);
+document.getElementById(`sort`).addEventListener("click", hideSorts);
 document.querySelectorAll('[name="category"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
 document.querySelectorAll('[name="brand"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
 document.querySelectorAll('[name="color"]').forEach(filterradio => filterradio.addEventListener('change', LoadProductsByFilters));
