@@ -221,7 +221,7 @@ const alldata=[
 ]
 
 const shoppingCart = [
-  {itemid: 101, qty: 1}
+  {code: 101, qty: 1}
 ];
 //functions
 
@@ -264,7 +264,7 @@ function loadProducts(n){
 
 const addItemToCart = itemid => {
 
-  const cartItem = shoppingCart.find(item => item.itemid == itemid);
+  const cartItem = shoppingCart.find(item => item.code == code);
 
   if (cartItem) {  
     cartItem.qty++;
