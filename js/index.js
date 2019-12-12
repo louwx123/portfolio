@@ -262,7 +262,7 @@ function loadProducts(n){
 
 //addto cart function
 
-const addItemToCart = itemid => {
+const addItemToCart = code => {
 
   const cartItem = shoppingCart.find(item => item.code == code);
 
