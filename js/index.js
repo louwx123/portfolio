@@ -182,7 +182,7 @@ const alldata=[
     stock:20,
     light:`light`
   },{//16
-    name:`razer Blackwodow`,
+    name:`razer Blackwidow`,
     code:117,
     image:`img/razer/razer-black-2.jpg`,
     color:`black`,
@@ -233,6 +233,8 @@ function getItemAsHtml(alldata) {
   }
   else{
     sale=`<small class="soldout">Sold out</small>`
+    cartbtn=`<button type="button" class="cartbtnout"  data-code="${alldata.code}" id="addtocart"> Add to Cart</button> `;
+
   }
 
   return `
@@ -254,7 +256,7 @@ document.getElementById(`allitems`).innerHTML = alldata
   .join("\n");
 
   //search 
-function loadProducts(n){
+function loadProducts(){
   const search=document.getElementById('find').value.toLowerCase();
   const searchResultsArray=alldata.filter(item=> item.name.toLowerCase().includes(search));
   renderProducts(searchResultsArray);
@@ -262,29 +264,27 @@ function loadProducts(n){
 
 //addto cart function
 
-const addItemToCart = code => {
+const addItemToCart = id => {
 
-  const cartItem = shoppingCart.find(item => item.code == code);
+  const cartItem = shoppingCart.find(item => item.code == id);
 
-  if (cartItem) {  
+  if (cartItem){  
     cartItem.qty++;
-    alert("Another item has been added to your cart");
-  } else {
-    shoppingCart.push({ID: pID, qty: 1});
-    alert("A new item has been added to your cart");
+    alert(` item has been added to your cart`);
+  } 
+  else{
+    alert(`An item has been added to your cart`);
+
+    shoppingCart.push({code: id, qty: 1});
   }
 }
-
-// const addItemToCart = courseid => {
-//   // [ {courseid: 101, qty: 1} ]
-
-//   const cartItem = shoppingCart.find(item => item.courseid == courseid);
-
-//   if (cartItem) {  // if a cartItem was found
-//     cartItem.qty++;
-//   } else {
-//     shoppingCart.push({courseid: courseid, qty: 1});
-//   }
+const clickToAddItem = event => {
+  if (!event.target.matches('button.cartbtn')) {
+    return;
+  }
+  const a = parseInt(event.target.dataset.a);
+  addItemToCart(a);
+}
 
 
 function hideFilter(){
@@ -332,7 +332,7 @@ function loadProductsByFilters(){
 
   if(document.querySelector('input[name="color"]:checked')){
     let color=document.querySelector('input[name="color"]:checked').value;
-    arrayByColor=arrayByBrand.filter(p=>p.color==color);
+    arrayByColor=arrayByBrand.filter(item=>item.color==color);
   }
   else{
     arrayByColor=arrayByBrand;
@@ -341,13 +341,13 @@ function loadProductsByFilters(){
 
   if(document.querySelector('input[name="light"]:checked')){
     let light=document.querySelector('input[name="light"]:checked').value;
-    arrayByLight=arrayByColor.filter(p=>p.light.toLowerCase()==light.toLowerCase());
+    arrayByLight=arrayByColor.filter(item=>item.light.toLowerCase()==light.toLowerCase());
   }
   else{
     arrayByLight=arrayByColor;
   }
 
-  if(document.querySelector('input[name="price"]:checked') != null){
+  if(document.querySelector('input[name="price"]:checked')){
     let price=document.querySelector('input[name="price"]:checked').value;
     arrayByPrice=arrayByLight.filter(item=>item.price>=price);
   }
@@ -401,6 +401,7 @@ function renderProducts(arr) {
 
 //execution
 window.addEventListener('load', () => {
+renderProducts(alldata);
 document.getElementById(`find`).addEventListener("change",loadProducts);
 document.getElementById(`pricehightolow`).addEventListener("click", loadProductsPriceHighTolow);
 document.getElementById(`pricelowtohigh`).addEventListener("click", loadProductsPriceLowToHigh);
@@ -409,13 +410,10 @@ document.getElementById(`brandza`).addEventListener("click", loadProductsBrandZA
 document.getElementById(`availability`).addEventListener("click", loadProductsByAvailability);
 document.getElementById(`filter`).addEventListener("click", hideFilter);
 document.getElementById(`sort`).addEventListener("click", hideSorts);
+document.getElementById('addtocart').addEventListener('click', clickToAddItem);
 document.querySelectorAll('[name="category"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
 document.querySelectorAll('[name="brand"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
 document.querySelectorAll('[name="color"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
 document.querySelectorAll('[name="light"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
 document.querySelectorAll('[name="price"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
-document.
-
-renderProducts(alldata);
-
 });
