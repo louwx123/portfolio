@@ -391,6 +391,9 @@ function renderProducts(arr) {
  
 }
 
+function clearFilter(){
+  renderProducts(alldata);
+}
 
 
 
@@ -405,6 +408,8 @@ document.getElementById(`brandza`).addEventListener("click", loadProductsBrandZA
 document.getElementById(`availability`).addEventListener("click", loadProductsByAvailability);
 document.getElementById(`filter`).addEventListener("click", hideFilter);
 document.getElementById(`sort`).addEventListener("click", hideSorts);
+document.getElementById(`clear`).addEventListener("click", clearFilter);
+
 document.getElementById('addtocart').addEventListener('click', clickToAddItem);
 document.querySelectorAll('[name="category"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
 document.querySelectorAll('[name="brand"]').forEach(filterradio => filterradio.addEventListener('change', loadProductsByFilters));
