@@ -250,11 +250,6 @@ function getItemAsHtml(alldata) {
       ${cartbtn}
     </section>`;
 } 
-
-document.getElementById(`allitems`).innerHTML = alldata
-  .map(getItemAsHtml)
-  .join("\n");
-
   //search 
 function loadProducts(){
   const search=document.getElementById('find').value.toLowerCase();
